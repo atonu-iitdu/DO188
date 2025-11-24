@@ -1,4 +1,6 @@
-FROM docker.io/library/mariadb
-COPY ./script/exporter.sh /
-CMD ["./exporter.sh"]
-
+Use `docker.io/library/mariadb` as the base image.
+Copy `~/DO188/devenv/script/exporter.sh` into `/exporter.sh` in the container.
+The container must execute `/exporter.sh` when start.
+Build the image with the tag `acme-exporter:latest`, then push it to `repository.ocp4.domain13.com`.
+Run the container using the image `repository.ocp4.domain13.com/desktop19/acme-exporter:latest`, name it `exporter_dump`, and mount `~/DO188/devenv/export/` on the host to `/export` in the container.
+Ensure the database is running and reachable via container name acmedevdb using repository.ocp4.domain13.com/desktop19/acme-db:latest image before starting `exporter_dump`.
