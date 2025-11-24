@@ -1,0 +1,6 @@
+Use `docker.io/library/mariadb` as the base image (note: this is a MariaDB image).
+Copy all the content of `/home/<username>/DO188/devenv/acmedb/` into `/var/lib/mysql/` in the container.
+The build process should accept two arguments: `DB_PASSWORD` and `DB_NAME`.
+The container file should define two environment variables: `MARIADB_ROOT_PASSWORD` and `MARIADB_DATABASE`, sourced from the arguments.
+Build the image with the tag `acme-db:latest`, passing `DB_PASSWORD=acme` and `DB_NAME=acme` as build arguments.
+Push the image to the container repository `repository.ocp4.domain13.com`.
